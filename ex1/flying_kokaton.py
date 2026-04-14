@@ -22,16 +22,23 @@ def main():
 
         key_lst = pg.key.get_pressed()
         
+        speed_list=[0,0]    #最初の０はx方向に移動、２番目はy方向に移動する。
         if key_lst[pg.K_UP]:   
-            kk_rct.move_ip(0, -1)
+            # kk_rct.move_ip(0, -1)
+            speed_list[1] -= 1
         if key_lst[pg.K_DOWN]:  
-            kk_rct.move_ip(0, +1)
+            # kk_rct.move_ip(0, +1)
+            speed_list[1] += 1
         if key_lst[pg.K_LEFT]:  
-            kk_rct.move_ip(-1, 0)
+            # kk_rct.move_ip(-1, 0)
+            speed_list[0] -= 1
         if key_lst[pg.K_RIGHT]: 
-            kk_rct.move_ip(+3, 0)
-        
-        kk_rct.move_ip(-1,0)
+            # kk_rct.move_ip(+3, 0)
+            speed_list[0] += 2
+    
+        # kk_rct.move_ip(-1,0)
+        speed_list[0] -= 1
+        kk_rct.move_ip(speed_list)
 
         x = tmr%3200 
         screen.blit(bg_img, [-x, 0])  
